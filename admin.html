@@ -7,9 +7,6 @@
 </head>
 <body class="bg-gray-100 p-8">
   <h1 class="text-3xl mb-6">Tableau de bord consommation</h1>
-  <div id="dashboard" class="hidden">
-  <button id="logout-btn" class="mb-4 text-red-600">Se déconnecter</button>
-  <button id="export-csv" class="mb-4 ml-4 text-blue-600">Exporter CSV</button>
   <table class="min-w-full bg-white rounded shadow">
     <thead>
       <tr>
@@ -21,8 +18,44 @@
     </thead>
     <tbody id="tbody"></tbody>
   </table>
-  </div>
-  <script type="module" src="admin.js"></script>
-  <script type="module" src="firebase.js"></script>
+
+  <script type="module">
+    import { db } from './firebase.js';
+    import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    async function loadData() {
+      const consommationsSnapshot = await getDocs(collection(db, "consommations"));
+      const data = {};
+
+      consommationsSnapshot.forEach(doc => {
+        const { client, produit, quantite } = doc.data();
+
+        if (!data[client]) {
+          data[client] = { "Canette": 0, "Nourriture": 0, total: 0 };
+        }
+        data[client][produit] = (data[client][produit] || 0) + quantite;
+        data[client].total += quantite;
+      });
+
+      const tbody = document.getElementById('tbody');
+      tbody.innerHTML = '';
+
+      for (const client in data) {
+        const row = document.createElement('tr');
+        row.classList.add('text-center', 'border-t');
+
+        row.innerHTML = `
+          <td class="py-2 px-4 border">${client}</td>
+          <td class="py-2 px-4 border">${data[client]["Canette"] || 0}</td>
+          <td class="py-2 px-4 border">${data[client]["Nourriture"] || 0}</td>
+          <td class="py-2 px-4 border font-bold">${data[client].total}</td>
+        `;
+
+        tbody.appendChild(row);
+      }
+    }
+
+    loadData();
+  </script>
 </body>
 </html>
