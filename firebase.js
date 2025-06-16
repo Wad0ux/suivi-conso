@@ -5,11 +5,11 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-aut
 
 const firebaseConfig = {
   apiKey: "AIzaSyCMU5B6-KiXjHG2xThAxInbqysDuVImAlc",
-  authDomain: "suivi-conso.firebaseapp.com",
+  authDomain: "suivi-conso-ea49f.firebaseapp.com",
   projectId: "suivi-conso-ea49f",
-  storageBucket: "suivi-conso.appspot.com",
-  messagingSenderId: "XXX",
-  appId: "APP_ID"
+  storageBucket: "suivi-conso-ea49f.firebasestorage.app",
+  messagingSenderId: "437467597001",
+  appId: "1:437467597001:web:ecf2cf8fca2793d092a518"
 };
 
 const app = initializeApp(firebaseConfig);
