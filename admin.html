@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Tableau de bord</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <div class="max-w-6xl mx-auto mt-10 p-6 bg-white rounded shadow">
+    <h1 class="text-3xl font-bold mb-6">Tableau de bord</h1>
+    <div id="login-form" class="space-y-4 mb-6">
+      <input type="email" id="email" placeholder="Email" class="p-2 border rounded w-full" />
+      <input type="password" id="password" placeholder="Mot de passe" class="p-2 border rounded w-full" />
+      <button id="login-btn" class="bg-blue-600 text-white p-2 rounded w-full hover:bg-blue-700">Connexion</button>
+    </div>
+    <div id="dashboard" class="hidden">
+      <button id="logout-btn" class="mb-4 text-red-600">Se déconnecter</button>
+      <button id="export-csv" class="mb-4 ml-4 text-blue-600">Exporter CSV</button>
+      <table class="w-full border mt-4">
+        <thead class="bg-gray-200">
+          <tr><th>Client</th><th>Produit</th><th>Quantité</th><th>Date</th></tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </div>
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="dashboard.js"></script>
+</body>
+</html>
