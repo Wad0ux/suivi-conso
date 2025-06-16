@@ -5,9 +5,9 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-aut
 
 const firebaseConfig = {
   apiKey: "TON_API_KEY",
-  authDomain: "TON_PROJET.firebaseapp.com",
-  projectId: "TON_PROJET_ID",
-  storageBucket: "TON_PROJET.appspot.com",
+  authDomain: "suivi-conso.firebaseapp.com",
+  projectId: "suivi-conso",
+  storageBucket: "suivi-conso.appspot.com",
   messagingSenderId: "XXX",
   appId: "APP_ID"
 };
