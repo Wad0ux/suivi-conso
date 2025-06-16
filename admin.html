@@ -54,7 +54,32 @@
         tbody.appendChild(row);
       }
     }
+    // Fonction simple pour exporter le tableau en CSV
+    function exportTableToCSV(filename) {
+      const rows = document.querySelectorAll('table tr');
+      const csv = [];
 
+      for (const row of rows) {
+        const cols = row.querySelectorAll('th, td');
+        const rowData = [];
+        cols.forEach(col => {
+          // Échapper les doubles quotes et entourer chaque champ de doubles quotes
+          let data = col.innerText.replace(/"/g, '""');
+          rowData.push(`"${data}"`);
+        });
+        csv.push(rowData.join(','));
+      }
+
+      // Création du fichier CSV et téléchargement
+      const csvFile = new Blob([csv.join('\n')], { type: 'text/csv' });
+      const downloadLink = document.createElement('a');
+      downloadLink.download = filename;
+      downloadLink.href = window.URL.createObjectURL(csvFile);
+      downloadLink.style.display = 'none';
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    }
     loadData();
   </script>
 </body>
