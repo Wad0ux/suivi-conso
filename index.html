@@ -24,3 +24,35 @@
   <script type="module" src="app.js"></script>
 </body>
 </html>
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ajouter une consommation</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <div class="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
+    <h1 class="text-2xl font-semibold mb-4">Ajouter une consommation</h1>
+    <form id="conso-form" class="space-y-4">
+      <p class="mt-4 text-sm text-right">
+        <a href="admin.html" class="text-blue-600 hover:underline">Accès Admin</a>
+      </p>
+      <input type="text" id="client" placeholder="Nom du client" class="w-full p-2 border rounded" required />
+      <select id="produit" class="w-full p-2 border rounded" required>
+        <option value="" disabled selected>Choisis un produit</option>
+        <option value="Bière">Canette</option>
+        <option value="Vin">Nourriture</option>
+      </select>
+      <input type="number" id="quantite" placeholder="Quantité" class="w-full p-2 border rounded" min="1" required />
+      <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Ajouter</button>
+    </form>
+    <p id="message" class="mt-4 text-green-600 hidden">Consommation ajoutée !</p>
+  </div>
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
