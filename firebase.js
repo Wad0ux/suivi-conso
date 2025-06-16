@@ -4,9 +4,9 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.0/firebas
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "TON_API_KEY",
+  apiKey: "AIzaSyCMU5B6-KiXjHG2xThAxInbqysDuVImAlc",
   authDomain: "suivi-conso.firebaseapp.com",
-  projectId: "suivi-conso",
+  projectId: "suivi-conso-ea49f",
   storageBucket: "suivi-conso.appspot.com",
   messagingSenderId: "XXX",
   appId: "APP_ID"
