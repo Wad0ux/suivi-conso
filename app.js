@@ -1,34 +1,27 @@
-// app.js
-import { db, auth } from './firebase.js';
-import { collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { db } from './firebase.js';
+import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-const form = document.getElementById('conso-form');
-const message = document.getElementById('message');
-
-form.addEventListener('submit', async (e) => {
-  e.preventDefault(); // Empêche le rechargement de la page
+document.getElementById('conso-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
 
   const client = document.getElementById('client').value.trim();
-  const produit = document.getElementById('produit').value.toLowerCase().trim();
-  //const produit = document.getElementById('produit').value.trim();
-  const quantite = parseInt(document.getElementById('quantite').value, 10);
+  const produit = document.getElementById('produit').value.trim().toLowerCase();
+  const quantite = parseInt(document.getElementById('quantite').value);
 
-  if (!client || !produit || isNaN(quantite) || quantite <= 0) {
-    alert("Veuillez remplir tous les champs correctement.");
-    return;
-  }
+  if (!client || !produit || isNaN(quantite)) return;
 
   try {
     await addDoc(collection(db, "consommations"), {
       client,
       produit,
       quantite,
-      date: Timestamp.now()
+      date: serverTimestamp()
     });
-    message.classList.remove('hidden');
-    form.reset();
+
+    document.getElementById('message').classList.remove('hidden');
+    document.getElementById('conso-form').reset();
   } catch (error) {
-    console.error("Erreur lors de l'ajout : ", error);
-    alert("Erreur lors de l'ajout, veuillez réessayer.");
+    console.error("Erreur lors de l'ajout :", error);
   }
 });
+
