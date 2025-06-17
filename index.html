@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,16 +13,17 @@
   <div class="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
     <h1 class="text-2xl font-semibold mb-4">Ajouter une consommation</h1>
     <form id="conso-form" class="space-y-4">
-      <p class="mt-4 text-sm text-right">
-        <a href="admin.html" class="text-blue-600 hover:underline">Accès Admin</a>
-      </p>
+        <p class="mt-4 text-sm text-right">
+          <a href="admin.html" class="text-blue-600 hover:underline">Accès Admin</a>
+        </p>
       <input type="text" id="client" placeholder="Nom du client" class="w-full p-2 border rounded" required />
       <select id="produit" class="w-full p-2 border rounded" required>
-        <option value="" disabled selected>Choisis un produit</option>
-        <option value="Bière">Canette</option>
-        <option value="Vin">Nourriture</option>
+        <option value="">Choisir un produit</option>
+        <option value="canette">Canette</option>
+        <option value="nourriture">Nourriture</option>
+
       </select>
-      <input type="number" id="quantite" placeholder="Quantité" class="w-full p-2 border rounded" min="1" required />
+      <input type="number" id="quantite" placeholder="Quantité" class="w-full p-2 border rounded" required />
       <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Ajouter</button>
     </form>
     <p id="message" class="mt-4 text-green-600 hidden">Consommation ajoutée !</p>
