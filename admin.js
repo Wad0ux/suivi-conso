@@ -95,6 +95,12 @@ async function loadData() {
   const data = {};
   const produitsSet = new Set();
 
+  const aliasProduits = {
+  "bière": "Canette",
+  "vin": "Nourriture",
+};
+
+  
   consommationsSnapshot.forEach(doc => {
     const { client, produit, quantite } = doc.data();
     const produitNom = produit.trim().toLowerCase();
@@ -110,7 +116,7 @@ async function loadData() {
   const produits = Array.from(produitsSet).sort();
   const theadRow = document.querySelector('thead tr');
   theadRow.innerHTML = '<th class="py-2 px-4 border">Nom</th>' +
-    produits.map(p => `<th class="py-2 px-4 border">${p}</th>`).join('') +
+    produits.map(p => `<th class="py-2 px-4 border">${aliasProduits[p] || p}</th>`).join('')
     '<th class="py-2 px-4 border">Total</th>';
 
   const tbody = document.getElementById('tbody');
