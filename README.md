@@ -19,3 +19,7 @@ Ce projet permet de suivre les consommations de produits dans une association à
 
 - `index.html` : formulaire public d’ajout de consommation
 - `admin.html` : tableau de bord (connexion requise), affichage et export CSV
+
+        <p class="mt-4 text-sm text-right">
+          <a href="admin.html" class="text-blue-600 hover:underline">Accès Admin</a>
+        </p>
