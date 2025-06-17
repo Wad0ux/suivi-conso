@@ -9,7 +9,8 @@ form.addEventListener('submit', async (e) => {
   e.preventDefault(); // Empêche le rechargement de la page
 
   const client = document.getElementById('client').value.trim();
-  const produit = document.getElementById('produit').value.trim();
+  const produit = document.getElementById('produit').value.toLowerCase().trim();
+  //const produit = document.getElementById('produit').value.trim();
   const quantite = parseInt(document.getElementById('quantite').value, 10);
 
   if (!client || !produit || isNaN(quantite) || quantite <= 0) {
